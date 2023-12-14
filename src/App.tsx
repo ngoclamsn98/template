@@ -1,26 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// src/components/App.tsx
+import React, { lazy, Suspense } from 'react';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 
-function App() {
+import { NextUIProvider, Spinner } from "@nextui-org/react";
+
+const Home = lazy(() => import('./pages/Home'));
+const App: React.FC = () => {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <NextUIProvider>
+        <Router>
+          <Suspense fallback={<Spinner />}>
+              <Routes>
+                <Route path='/' Component={Home}/>
+              </Routes>
+          </Suspense>
+      </Router>
+    </NextUIProvider>
+    
   );
-}
+};
 
 export default App;
