@@ -1,8 +1,8 @@
-// src/pages/Home.tsx
+// src/pages/Translate.tsx
 import React from 'react';
-
-const Translate: React.FC = () => {
-  return <div>Translate Page</div>;
+import { Translate } from '../../modules/Translate';
+const TranslatePage: React.FC = () => {
+    return <Translate />;
 };
 
-export default Translate;
+export default TranslatePage;
